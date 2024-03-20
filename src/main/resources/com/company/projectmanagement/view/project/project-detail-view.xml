@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://projectDetailView.title"
+      focusComponent="form">
+    <data>
+        <instance id="projectDc"
+                  class="com.company.projectmanagement.entity.Project">
+            <fetchPlan extends="_base">
+                <property name="manager" fetchPlan="_instance_name"/>
+                <property name="tasks" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+            <collection id="tasksDc" property="tasks"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <actions>
+        <action id="saveAction" type="detail_saveClose"/>
+        <action id="closeAction" type="detail_close"/>
+    </actions>
+    <layout>
+        <formLayout id="form" dataContainer="projectDc">
+            <textField id="nameField" property="name"/>
+            <textArea id="descriptionField" height="9.5em" property="description"/>
+            <entityPicker property="manager">
+                <actions>
+                    <action id="entityLookup" type="entity_lookup"/>
+                    <action id="entityClear" type="entity_clear"/>
+                </actions>
+            </entityPicker>
+        </formLayout>
+        <hbox id="buttonsPanel" classNames="buttons-panel">
+            <button action="tasksDataGrid.create"/>
+            <button action="tasksDataGrid.edit"/>
+            <button action="tasksDataGrid.remove"/>
+        </hbox>
+        <dataGrid id="tasksDataGrid" dataContainer="tasksDc" width="100%" height="100%">
+            <actions>
+                <action id="create" type="list_create"/>
+                <action id="edit" type="list_edit"/>
+                <action id="remove" type="list_remove"/>
+            </actions>
+            <columns>
+                <column property="name"/>
+                <column property="dueDate"/>
+                <column property="priority"/>
+                <column property="description"/>
+                <column property="estimation"/>
+            </columns>
+        </dataGrid>
+        <hbox id="detailActions">
+            <button id="saveAndCloseBtn" action="saveAction"/>
+            <button id="closeBtn" action="closeAction"/>
+        </hbox>
+    </layout>
+</view>
