@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <view xmlns="http://jmix.io/schema/flowui/view"
       xmlns:c="http://jmix.io/schema/flowui/jpql-condition"
-      title="msg://projectListView.title"
-      focusComponent="projectsDataGrid">
+      title="msg://taskListView.title"
+      focusComponent="tasksDataGrid">
     <data>
-        <collection id="projectsDc"
-                    class="com.company.projectmanagement.entity.Project">
+        <collection id="tasksDc"
+                    class="com.company.projectmanagement.entity.Task">
             <fetchPlan extends="_base">
-                <property name="manager" fetchPlan="_instance_name"/>
+                <property name="assignee" fetchPlan="_instance_name"/>
+                <property name="project" fetchPlan="_instance_name"/>
             </fetchPlan>
-            <loader id="projectsDl" readOnly="true">
+            <loader id="tasksDl" readOnly="true">
                 <query>
-                    <![CDATA[select e from Project e]]>
+                    <![CDATA[select e from Task_ e]]>
                 </query>
             </loader>
         </collection>
@@ -29,29 +30,33 @@
     </actions>
     <layout>
         <genericFilter id="genericFilter"
-                       dataLoader="projectsDl">
+                       dataLoader="tasksDl">
             <properties include=".*"/>
         </genericFilter>
         <hbox id="buttonsPanel" classNames="buttons-panel">
-            <button id="createBtn" action="projectsDataGrid.create"/>
-            <button id="editBtn" action="projectsDataGrid.edit"/>
-            <button id="removeBtn" action="projectsDataGrid.remove"/>
-            <simplePagination id="pagination" dataLoader="projectsDl"/>
+            <button id="createBtn" action="tasksDataGrid.create"/>
+            <button id="editBtn" action="tasksDataGrid.edit"/>
+            <button id="removeBtn" action="tasksDataGrid.remove"/>
+            <simplePagination id="pagination" dataLoader="tasksDl"/>
         </hbox>
-        <dataGrid id="projectsDataGrid"
+        <dataGrid id="tasksDataGrid"
                   width="100%"
                   minHeight="20em"
-                  dataContainer="projectsDc"
-                  columnReorderingAllowed="true" alignSelf="AUTO">
+                  dataContainer="tasksDc"
+                  columnReorderingAllowed="true">
             <actions>
                 <action id="create" type="list_create"/>
                 <action id="edit" type="list_edit"/>
                 <action id="remove" type="list_remove"/>
             </actions>
             <columns resizable="true">
-                <column property="name"/>
-                <column property="description" width="700px"/>
-                <column property="manager" width="200px"/>
+                <column property="name" width="200px"/>
+                <column property="dueDate" width="60px"/>
+                <column property="assignee" width="80px"/>
+                <column property="priority" width="50px"/>
+                <column property="estimation" width="50px"/>
+                <column property="project" width="80px"/>
+                <column property="description" width="100px"/>
             </columns>
         </dataGrid>
         <hbox id="lookupActions" visible="false">

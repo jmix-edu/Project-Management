@@ -1,6 +1,7 @@
 package com.company.projectmanagement.entity;
 
 import io.jmix.core.DeletePolicy;
+import io.jmix.core.FileRef;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
 import io.jmix.core.entity.annotation.OnDeleteInverse;
 import io.jmix.core.metamodel.annotation.InstanceName;
@@ -25,6 +26,9 @@ public class Task {
     @Id
     private UUID id;
 
+    @Column(name = "ATTACHMENT", length = 1024)
+    private FileRef attachment;
+
     @InstanceName
     @Column(name = "NAME", nullable = false)
     @NotNull
@@ -48,10 +52,19 @@ public class Task {
     @PositiveOrZero
     @Column(name = "ESTIMATION")
     private Integer estimation;
+
     @OnDeleteInverse(DeletePolicy.CASCADE)
     @JoinColumn(name = "PROJECT_ID", nullable = false)
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Project project;
+
+    public FileRef getAttachment() {
+        return attachment;
+    }
+
+    public void setAttachment(FileRef attachment) {
+        this.attachment = attachment;
+    }
 
     public Project getProject() {
         return project;

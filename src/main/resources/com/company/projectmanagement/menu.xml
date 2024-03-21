@@ -4,6 +4,10 @@
     <menu id="application" title="msg://com.company.projectmanagement/menu.application.title" opened="true">
         <item view="User.list" title="msg://com.company.projectmanagement.view.user/UserListView.title"/>
         <item view="Project.list" title="msg://com.company.projectmanagement.view.project/projectListView.title"/>
+        <item view="Task_.list" title="msg://com.company.projectmanagement.view.task/taskListView.title"/>
+        <item view="TimeEntry.list" title="msg://com.company.projectmanagement.view.timeentry/timeEntryListView.title"/>
+        <item view="ProjectStats.list"
+              title="msg://com.company.projectmanagement.view.projectstats/projectStatsListView.title"/>
     </menu>
 
 </menu-config>

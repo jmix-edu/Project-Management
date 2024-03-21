@@ -20,6 +20,55 @@
           </option>
         </ModuleSettings>
       </entry>
+      <entry key="jmixpm.main">
+        <ModuleSettings>
+          <option name="dataStoreOptionsV2">
+            <map>
+              <entry key="main">
+                <value>
+                  <DataStoreSettingsV2>
+                    <option name="generateDdlType" value="CREATE_AND_UPDATE" />
+                    <option name="supportedTypes">
+                      <option value="hsql" />
+                    </option>
+                  </DataStoreSettingsV2>
+                </value>
+              </entry>
+            </map>
+          </option>
+        </ModuleSettings>
+      </entry>
     </moduleSettings>
+  </component>
+  <component name="JmixPluginProjectSettings">
+    <option name="savedDbProperties">
+      <list>
+        <SavedDbProperties>
+          <option name="databaseName" value="projectmanagement" />
+          <option name="dbType" value="hsqlfile" />
+          <option name="dbmsVersion" />
+          <option name="host" value=".jmix/hsqldb" />
+          <option name="url" value="jdbc:hsqldb:file:.jmix/hsqldb/projectmanagement" />
+          <option name="user" value="sa" />
+        </SavedDbProperties>
+        <SavedDbProperties>
+          <option name="databaseName" value="projectmanagement" />
+          <option name="dbType" value="postgres" />
+          <option name="dbmsVersion" />
+          <option name="host" value="localhost" />
+          <option name="pass" value="jmix" />
+          <option name="url" value="jdbc:postgresql://localhost/projectmanagement" />
+          <option name="user" value="admin" />
+        </SavedDbProperties>
+        <SavedDbProperties>
+          <option name="databaseName" value="projectmanagement" />
+          <option name="dbType" value="hsql" />
+          <option name="dbmsVersion" />
+          <option name="host" value="localhost" />
+          <option name="url" value="jdbc:hsqldb:hsql://localhost/projectmanagement" />
+          <option name="user" value="sa" />
+        </SavedDbProperties>
+      </list>
+    </option>
   </component>
 </project>

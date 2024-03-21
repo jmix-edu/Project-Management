@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://projectStatsListView.title"
+      focusComponent="projectStatsesDataGrid">
+    <data>
+        <collection id="projectStatsesDc"
+                    class="com.company.projectmanagement.entity.ProjectStats">
+            <loader id="projectStatsesDl" readOnly="true"/>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <urlQueryParameters>
+            <pagination component="pagination"/>
+        </urlQueryParameters>
+    </facets>
+    <actions>
+        <action id="selectAction" type="lookup_select"/>
+        <action id="discardAction" type="lookup_discard"/>
+    </actions>
+    <layout>
+        <hbox id="buttonsPanel" classNames="buttons-panel">
+            <simplePagination id="pagination" dataLoader="projectStatsesDl"/>
+        </hbox>
+        <dataGrid id="projectStatsesDataGrid"
+                  width="100%"
+                  minHeight="20em"
+                  dataContainer="projectStatsesDc"
+                  columnReorderingAllowed="true">
+            <actions>
+            </actions>
+            <columns resizable="true">
+                <column property="projectName"/>
+                <column property="tasksCount"/>
+                <column property="plannedEfforts"/>
+                <column property="actualEfforts"/>
+            </columns>
+        </dataGrid>
+        <hbox id="lookupActions" visible="false">
+            <button id="selectBtn" action="selectAction"/>
+            <button id="discardBtn" action="discardAction"/>
+        </hbox>
+    </layout>
+</view>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://taskDetailView.title">
+    <actions>
+        <action id="detailSaveClose" type="detail_saveClose"/>
+        <action id="viewClose" type="view_close"/>
+    </actions>
+    <data>
+        <instance id="taskDc" class="com.company.projectmanagement.entity.Task">
+            <fetchPlan extends="_base">
+                <property name="assignee" fetchPlan="_instance_name"/>
+                <property name="project" fetchPlan="_instance_name"/>
+            </fetchPlan>
+            <loader id="taskDl"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <layout>
+        <formLayout id="formLayout" dataContainer="taskDc">
+            <textField id="nameField" property="name"/>
+            <entityPicker property="project">
+                <actions>
+                    <action id="entityLookup" type="entity_lookup"/>
+                    <action id="entityClear" type="entity_clear"/>
+                </actions>
+            </entityPicker>
+            <entityPicker property="assignee">
+                <actions>
+                    <action id="entityLookup" type="entity_lookup"/>
+                    <action id="entityClear" type="entity_clear"/>
+                </actions>
+            </entityPicker>
+            <datePicker property="dueDate"/>
+            <select property="priority">
+            </select>
+            <textField property="estimation"/>
+            <textArea property="description" height="10em" maxLength="500" valueChangeMode="EAGER"
+                      id="descriptionField"/>
+            <fileStorageUploadField id="attachmentField"
+                                    property="attachment"
+                                    clearButtonVisible="true"
+                                    fileNameVisible="true"
+                                    uploadIcon="vaadin:upload"
+                                    maxFileSize="10000000"/>
+        </formLayout>
+        <hbox>
+            <button action="detailSaveClose" id="detailSaveCloseButton"/>
+            <button action="viewClose" id="viewCloseButton"/>
+        </hbox>
+    </layout>
+</view>

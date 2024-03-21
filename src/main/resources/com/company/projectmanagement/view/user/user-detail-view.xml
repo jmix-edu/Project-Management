@@ -17,6 +17,7 @@
         <dataLoadCoordinator auto="true"/>
     </facets>
     <layout>
+        <image id="avatar" dataContainer="userDc" property="avatar" width="200px" height="200px"/>
         <formLayout id="form" dataContainer="userDc">
             <textField id="usernameField" property="username" readOnly="true"/>
             <passwordField id="passwordField"
@@ -32,6 +33,8 @@
             <textField id="emailField" property="email"/>
             <comboBox id="timeZoneField" property="timeZoneId"/>
             <checkbox id="activeField" property="active"/>
+            <fileUploadField id="avatarField" property="avatar" clearButtonVisible="true" fileNameVisible="true"
+                             uploadIcon="vaadin:upload"/>
         </formLayout>
         <hbox id="detailActions">
             <button id="saveAndCloseBtn" action="saveAction"/>
