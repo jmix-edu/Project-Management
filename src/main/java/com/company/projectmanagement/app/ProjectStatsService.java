@@ -27,7 +27,12 @@ public class ProjectStatsService {
             stat.setId(project.getId());
             stat.setProjectName(project.getName());
             stat.setTasksCount(project.getTasks().size());
-            Integer plannedEfforts = project.getTasks().stream().map(Task::getEstimation).reduce(0, Integer::sum);
+
+            Integer plannedEfforts = 0;
+            for (Task task : project.getTasks()) {
+                plannedEfforts += task.getEstimation() != null ? task.getEstimation() : 0;
+            }
+
             stat.setPlannedEfforts(plannedEfforts);
             stat.setActualEfforts(getActualEfforts(project.getId()));
             return stat;
